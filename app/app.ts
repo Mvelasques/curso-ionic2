@@ -2,13 +2,17 @@ import {Component} from '@angular/core';
 import {Platform, ionicBootstrap} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import {HomePage} from './pages/home/home';
+import {ProjetoPage} from './pages/projeto/projeto';
 
 
 @Component({
-  template: '<ion-nav [root]="rootPage"></ion-nav>'
+  templateUrl: 'build/app.html'
 })
 export class MyApp {
-  rootPage: any = HomePage;
+
+  home: any = HomePage;
+  projeto: any = ProjetoPage;
+  rootPage: any = this.home;
 
   constructor(platform: Platform) {
     platform.ready().then(() => {
@@ -17,6 +21,13 @@ export class MyApp {
       StatusBar.styleDefault();
     });
   }
+
+    openPage(page) {
+      this.rootPage = page;
+    }
+
+
+
 }
 
 ionicBootstrap(MyApp);
